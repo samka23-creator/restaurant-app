@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QR Codes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+
+  <style>
+    .qr-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media(max-width:800px){
+      .qr-grid{ grid-template-columns:1fr; }
+    }
+    .qr-box{
+      text-align:center;
+    }
+    .qr-img{
+      width: 260px;
+      height: 260px;
+      border-radius: 14px;
+      background: #fff;
+      padding: 10px;
+      display:inline-block;
+    }
+    .qr-title{
+      margin: 0 0 10px;
+      font-weight: 850;
+      letter-spacing: .2px;
+    }
+    .qr-note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+      @media print{
+    body{
+      background:#fff !important;
+      color:#000 !important;
+    }
+    .topbar, .footer{
+      display:none !important;
+    }
+    .card{
+      box-shadow:none !important;
+      border:1px solid #ddd !important;
+      background:#fff !important;
+    }
+    .qr-note, p{
+      color:#333 !important;
+    }
+  }
+
+  </style>
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>QR Codes</h1>
+      <p>Print this page and place on tables.</p>
+
+      <div class="qr-grid">
+        <div class="card qr-box" style="padding:16px;">
+          <h3 class="qr-title">Menu</h3>
+          <img class="qr-img" src="/qr/menu" alt="Menu QR">
+          <div class="qr-note">Scan to open the menu page.</div>
+        </div>
+
+        <div class="card qr-box" style="padding:16px;">
+          <h3 class="qr-title">Reservation</h3>
+          <img class="qr-img" src="/qr/reservation" alt="Reservation QR">
+          <div class="qr-note">Scan to open the reservation page.</div>
+        </div>
+      <div class="card qr-box" style="padding:16px;">
+  <h3 class="qr-title">Order</h3>
+  <img class="qr-img" src="/qr/order" alt="Order QR">
+  <div class="qr-note">Scan to order food.</div>
+ </div>
+
+ </div>
+
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

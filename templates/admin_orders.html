@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin • Orders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>Orders</h1>
+      <p style="color:var(--muted); margin-top:6px;">Staff view — newest first</p>
+
+      {% if orders %}
+        <div style="margin-top:16px; display:grid; gap:12px;">
+          {% for o in orders %}
+            <div class="card" style="padding:14px;">
+              <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+                <strong>{{ o.name }}</strong>
+                <span style="color:var(--muted); font-size:14px;">
+                  {{ o.id }}
+                </span>
+              </div>
+
+              <div style="margin-top:8px; font-size:14px; line-height:1.6;">
+                🍽️ <strong>Table:</strong> {{ o.table or "-" }}<br>
+                🧾 <strong>Status:</strong> {{ o.status }}
+              </div>
+
+              <div class="card" style="padding:12px; margin-top:10px;">
+                <strong>Items:</strong>
+                <pre style="white-space:pre-wrap; color:var(--muted); margin-top:6px;">{{ o.items }}</pre>
+              </div>
+
+              {% if o.notes %}
+                <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+                  📝 {{ o.notes }}
+                </div>
+              {% endif %}
+
+              <form method="POST" action="/admin/orders?pw={{ pw }}" style="margin-top:12px;">
+                <input type="hidden" name="delete_id" value="{{ o.id }}">
+                <button class="btn" type="submit" onclick="return confirm('Delete this order?');">
+                  Delete
+                </button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="margin-top:12px; color:var(--muted);">No orders yet.</p>
+      {% endif %}
+
+      <div style="margin-top:14px;">
+        <a class="btn" href="/admin?pw={{ pw }}">Back to Reservations</a>
+      </div>
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

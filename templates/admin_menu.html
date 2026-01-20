@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin • Menu Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
+        <h1 style="margin:0;">Menu Manager</h1>
+        <a class="btn" href="/admin-logout">Logout</a>
+      </div>
+
+      <p style="color:var(--muted); margin-top:8px;">
+        Staff can add menu items with price and image.
+      </p>
+
+      {% if error %}
+        <div class="card" style="padding:12px; border:1px solid rgba(255,80,80,.35); margin-top:12px;">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      <form method="POST" enctype="multipart/form-data" style="margin-top:14px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="name">Item name *</label>
+            <input id="name" name="name" type="text" required placeholder="Example: Truffle Pasta">
+          </div>
+
+          <div>
+            <label for="price">Price (€) *</label>
+            <input id="price" name="price" type="text" required placeholder="Example: 14.90">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="category">Category</label>
+            <input id="category" name="category" type="text" placeholder="Starters / Mains / Drinks">
+          </div>
+
+          <div>
+            <label for="image">Image (jpg/png/webp)</label>
+            <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.webp">
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Short description..."></textarea>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+          <button class="btn btn-gold" type="submit">Add item</button>
+          <a class="btn" href="/admin">Back to Reservations</a>
+          <a class="btn" href="/admin/orders">Back to Orders</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2 style="margin:0;">Current menu</h2>
+
+      {% if items %}
+        <div style="margin-top:14px; display:grid; gap:12px;">
+          {% for it in items %}
+            <div class="card" style="padding:14px;">
+              <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
+                <div>
+                  <strong style="font-size:16px;">{{ it.name }}</strong>
+                  {% if it.category %}
+                    <div style="color:var(--muted); font-size:13px; margin-top:2px;">
+                      {{ it.category }}
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div style="font-weight:800;">
+                  € {{ "%.2f"|format(it.price) }}
+                </div>
+              </div>
+
+              {% if it.description %}
+                <div style="margin-top:8px; color:var(--muted); font-size:14px;">
+                  {{ it.description }}
+                </div>
+              {% endif %}
+
+              {% if it.image %}
+                <div style="margin-top:10px;">
+                  <img src="/static/images/menu/{{ it.image }}" alt="{{ it.name }}"
+                       style="width:100%; max-width:420px; border-radius:14px; border:1px solid rgba(255,255,255,.12);">
+                </div>
+              {% endif %}
+
+              <!-- DELETE BUTTON (new) -->
+              <form method="POST" style="margin-top:12px;">
+                <input type="hidden" name="delete_id" value="{{ it.id }}">
+                <button class="btn" type="submit" style="border:1px solid rgba(255,80,80,.35);">
+                  🗑 Poista kohde
+                </button>
+              </form>
+
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="margin-top:12px; color:var(--muted);">No menu items yet.</p>
+      {% endif %}
+    </section>
+
+  </main>
+
+  {% include "partials/footer.html" %}
+</body>
+</html>

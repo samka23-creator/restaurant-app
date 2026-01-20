@@ -1,0 +1,31 @@
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">DR</div>
+      <div>
+        <div class="brand-name">Al Suleimai Ravintola</div>
+        <div class="brand-tag">Dark luxury • Fast pickup • Easy reservations</div>
+      </div>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="nav-toggle" type="button"
+      onclick="document.body.classList.toggle('nav-open')">
+      ☰
+    </button>
+
+    <!-- Links (desktop = row, mobile = dropdown) -->
+    <nav class="topnav">
+      <a href="/" class="nav-link {{ 'active' if request.path == '/' else '' }}">{{ t("home") }}</a>
+      <a href="/menu" class="nav-link {{ 'active' if request.path.startswith('/menu') else '' }}">{{ t("menu") }}</a>
+      <a href="/order" class="nav-link {{ 'active' if request.path.startswith('/order') else '' }}">{{ t("order") }}</a>
+      <a href="/reservation" class="nav-link {{ 'active' if request.path.startswith('/reservation') else '' }}">{{ t("reservation") }}</a>
+
+      <div class="lang-switch">
+        <a href="?lang=en">EN</a>
+        <a href="?lang=fi">FI</a>
+      </div>
+    </nav>
+
+  </div>
+</header>

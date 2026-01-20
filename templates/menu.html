@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Al Suleimani Ravintola • Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>{{ t("menu") }}</h1>
+      <p style="color:var(--muted); margin-top:6px;">Updated live by staff.</p>
+
+      {% if items %}
+        {# Group items by category safely #}
+        {% for group in items|groupby("category") %}
+          {% set cat = group.grouper %}
+          <h2 style="margin-top:26px; margin-bottom:10px;">
+            {{ cat if cat else "Other" }}
+          </h2>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
+            {% for it in group.list %}
+              <div class="card" style="padding:14px;">
+                <div style="display:flex; justify-content:space-between; gap:12px; font-weight:800;">
+                  <span>{{ it.name }}</span>
+                  <span style="color: var(--gold2);">€{{ "%.2f"|format(it.price|float) }}</span>
+                </div>
+
+                {% if it.description %}
+                  <div style="color: var(--muted); margin-top:6px; font-size:13px;">
+                    {{ it.description }}
+                  </div>
+                {% endif %}
+
+                {% if it.image %}
+                  <img
+                    src="{{ url_for('static', filename='images/menu/' ~ it.image) }}"
+                    alt="{{ it.name }}"
+                    style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-top:10px; cursor:pointer;"
+                    onclick="openImg(this.src)"
+                  >
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+      {% else %}
+        <p style="margin-top:12px; color:var(--muted);">No menu items yet.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <!-- Simple image modal (nice, not a new tab) -->
+  <div id="imgModal"
+       style="position:fixed; inset:0; background:rgba(0,0,0,.75); display:none; align-items:center; justify-content:center; padding:24px; z-index:9999;"
+       onclick="closeImg()">
+    <img id="modalImg" src=""
+         style="max-width:95vw; max-height:90vh; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,.45);">
+  </div>
+
+  <script>
+    function openImg(src){
+      const m = document.getElementById("imgModal");
+      const i = document.getElementById("modalImg");
+      i.src = src;
+      m.style.display = "flex";
+    }
+    function closeImg(){
+      const m = document.getElementById("imgModal");
+      const i = document.getElementById("modalImg");
+      m.style.display = "none";
+      i.src = "";
+    }
+  </script>
+
+</body>
+</html>

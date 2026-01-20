@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Al suleimani ravintola • Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Connect CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 64px 0 34px;">
+    <section class="card">
+      <h1>{{ t("home") }}</h1>
+
+
+
+<p>
+  {{ t("Reserve your table in seconds or explore today's menu.") }}
+  <br>
+  {{ t("A calm, elegant experience designed for modern restaurants.") }}
+</p>
+
+<a href="/reservation" class="btn btn-gold">{{ t("reserve_table") }}</a>
+<a href="/menu" class="btn">{{ t("view_menu") }}</a>
+
+<a class="btn" href="tel:+3584424***" style="margin-top:12px;">
+  📞 Call the restaurant
+</a>
+
+<a href="/qr" class="btn">{{ t("qr_codes") }}</a>
+
+
+      </div>
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

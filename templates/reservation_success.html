@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <h1>{{ t("reservation_success_title") }}</h1>
+<p>{{ t("reservation_success_text") }}</p>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h2>{{ t("reservation_received") }} ✅</h2>
+
+      
+
+
+      <div class="card" style="padding:14px; margin-top:14px;">
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line);">
+          <div style="color:var(--muted);">{{ t("name") }}</div>
+          <div>{{ reservation.name }}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line);">
+          <div style="color:var(--muted);">{{ t("phone") }}</div>
+          <div>{{ reservation.phone }}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line);">
+          <div style="color:var(--muted);">{{ t("date") }}</div>
+          <div>{{ reservation.date }}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line);">
+          <div style="color:var(--muted);">{{ t("time") }}</div>
+          <div>{{ reservation.time }}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line);">
+          <div style="color:var(--muted);">{{ t("people") }}</div>
+          <div>{{ reservation.people }}</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; padding:6px 0;">
+          <div style="color:var(--muted);">{{ t("notes") }}</div>
+          <div>{{ reservation.notes or "-" }}</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <a class="btn" href="/">{{ t("back to home") }}</a>
+      </div>
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin • Reservations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<p style="margin-top:10px;">
+  <a class="btn" href="/admin/orders?pw={{ pw }}">View Orders</a>
+</p>
+
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>{{ t("reservations") }}</h1>
+      <a href="/admin-logout" class="btn" style="float:right;">
+  {{ t("logout") }}
+</a>
+
+
+
+      <p style="color:var(--muted); margin-top:6px;">{{ t("Staff view — newest first") }}</p>
+
+      {% if reservations %}
+        <div style="margin-top:16px; display:grid; gap:12px;">
+          {% for r in reservations %}
+            <div class="card" style="padding:14px;">
+              <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+                <strong>{{ r.name }}</strong>
+                <span style="color:var(--muted); font-size:14px;">{{ r.date }} • {{ r.time }}</span>
+              </div>
+
+              <div style="margin-top:8px; font-size:14px; line-height:1.6;">
+                📞 {{ r.phone }}<br>
+                👥 {{ r.people }} people
+              </div>
+
+              {% if r.notes %}
+                <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+                  📝 {{ r.notes }}
+                </div>
+              {% endif %}
+
+              <form method="POST" action="/admin?pw={{ pw }}&lang={{ lang }}" style="margin-top:12px;">
+
+
+                <input type="hidden" name="delete_id" value="{{ r.id }}">
+                <button type="submit" class="btn">{{ t("delete") }}</button>
+
+                
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="margin-top:12px; color:var(--muted);">{{ t("No reservations yet.") }}</p>
+      {% endif %}
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

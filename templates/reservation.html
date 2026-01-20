@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Duploh's Ravintola • Reservation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>{{ t("reservation_title") }}</h1>
+
+      <p>{{ t("reservation_subtitle") }}</p>
+
+
+      <form method="POST" action="/reservation" style="margin-top:12px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="name">{{ t("name") }} *</label>
+            <input id="name" name="name" type="text" required placeholder="{{ t('name') }}">
+          </div>
+
+          <div>
+            <label for="phone">{{ t("phone") }} *</label>
+
+            <input id="phone" name="phone" type="tel" required placeholder="+358...">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+          </div>
+
+          <div>
+            <label for="date">{{ t("date") }} *</label>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <input id="date" name="date" type="date" required style="flex:1;">
+
+              <button class="btn" type="button"
+                onclick="document.getElementById('date').showPicker && document.getElementById('date').showPicker()">
+                📅
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label for="time">{{ t("time") }} *</label>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <input id="time" name="time" type="time" required style="flex:1;" min="08:00" max="22:00" step="60">
+
+              <button class="btn" type="button"
+                onclick="document.getElementById('time').showPicker && document.getElementById('time').showPicker()">
+                🕒
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="people">{{ t("people") }} *</label>
+            <select id="people" name="people" required>
+              <option value="" selected disabled>{{ t("select_people") }}</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="notes">{{ t("notes") }}</label>
+            <input id="notes" name="notes" type="text" placeholder="{{ t('notes') }}">
+          </div>
+        </div>
+
+        <label style="display:flex; gap:10px; align-items:flex-start; margin-top:8px; color: var(--muted); font-size:13px;">
+          <input type="checkbox" required style="width:auto; margin-top:3px;">
+          {{ t("confirm_details") }}
+        </label>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+          <button class="btn btn-gold" type="submit">{{ t("send_reservation") }}</button>
+          <a class="btn" href="/">{{ t("back_home") }}</a>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+<script>
+  // Set date minimum to today (prevents past dates)
+  (function () {
+    const dateInput = document.getElementById("date");
+    const timeInput = document.getElementById("time");
+
+    if (!dateInput) return;
+
+    // YYYY-MM-DD for <input type="date">
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+
+    dateInput.min = todayStr;
+
+    // Optional: If user picked an older date already, reset it
+    if (dateInput.value && dateInput.value < todayStr) {
+      dateInput.value = todayStr;
+    }
+
+    // Optional: If date is today, keep time within opening hours
+    // (min/max are already set on the input)
+    if (timeInput) {
+      const OPEN = "08:00";
+      const CLOSE = "22:00";
+
+      function clampTimeIfNeeded() {
+        if (!timeInput.value) return;
+        if (timeInput.value < OPEN) timeInput.value = OPEN;
+        if (timeInput.value > CLOSE) timeInput.value = CLOSE;
+      }
+
+      dateInput.addEventListener("change", clampTimeIfNeeded);
+      timeInput.addEventListener("change", clampTimeIfNeeded);
+    }
+  })();
+</script>
+
+</body>
+</html>

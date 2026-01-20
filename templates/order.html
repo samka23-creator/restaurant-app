@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Order</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>Order Food</h1>
+      <p>Write your order and send it to the kitchen/staff.</p>
+
+      <form method="POST" action="/order" style="margin-top:12px;">
+
+        <label for="name">Name *</label>
+        <input id="name" name="name" type="text" required placeholder="Your name">
+
+        <label for="table">Table / Seat</label>
+        <input id="table" name="table" type="text" placeholder="Example: Table 3">
+
+        <label for="items">Order *</label>
+        <textarea id="items" name="items" required placeholder="Example:
+- Truffle Pasta x1
+- Water x2"></textarea>
+
+        <label for="notes">Notes</label>
+        <input id="notes" name="notes" type="text" placeholder="Allergies, no onions, etc.">
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+          <button class="btn btn-gold" type="submit">Send Order</button>
+          <a class="btn" href="/">Back to Home</a>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

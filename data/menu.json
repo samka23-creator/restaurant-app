@@ -1,0 +1,38 @@
+[
+  {
+    "id": "20260107205836",
+    "name": "pizza",
+    "category": "Mains",
+    "description": "",
+    "price": 13.9,
+    "image": "20260107205836_download.jpg",
+    "available": true
+  },
+  {
+    "id": "20260107223811",
+    "name": "Coca-Cola",
+    "category": "drinks",
+    "description": "",
+    "price": 2.99,
+    "image": "20260107223811_cocacola_unsplash.jpg",
+    "available": true
+  },
+  {
+    "id": "20260108162847",
+    "name": "burger",
+    "category": "mains ",
+    "description": "",
+    "price": 7.49,
+    "image": "20260108162847_Burger.jpg",
+    "available": true
+  },
+  {
+    "id": "20260115162436",
+    "name": "anjero habasha",
+    "category": "Mains",
+    "description": "",
+    "price": 11.0,
+    "image": "20260115162436_special-injera.jpg",
+    "available": true
+  }
+]

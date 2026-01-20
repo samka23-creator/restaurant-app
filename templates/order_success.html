@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Order Sent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='images/css/style.css') }}">
+</head>
+<body>
+
+  {% include "partials/header.html" %}
+
+  <main class="container" style="padding: 28px 0;">
+    <section class="card">
+      <h1>Order received ✅</h1>
+      <p>Your order has been sent to the staff.</p>
+
+      <div class="card" style="padding:14px; margin-top:14px;">
+        <div><strong>Name:</strong> {{ order.name }}</div>
+        <div><strong>Table:</strong> {{ order.table or "-" }}</div>
+        <div style="margin-top:8px;">
+          <strong>Order:</strong>
+          <pre style="white-space:pre-wrap; color:var(--muted); margin-top:6px;">
+{{ order.items }}
+          </pre>
+        </div>
+        {% if order.notes %}
+          <div style="margin-top:6px;">
+            <strong>Notes:</strong> {{ order.notes }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div style="margin-top:14px;">
+        <a class="btn" href="/">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  {% include "partials/footer.html" %}
+
+</body>
+</html>

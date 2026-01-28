@@ -8,69 +8,76 @@
     "image": "20260115162436_special-injera.jpg",
     "available": true
   },
-  [
   {
-    "id": "dish1",
-    "name": "Bariis & Hilib",
+    "id": "20260128042207",
+    "name": "cambuulo",
     "category": "Mains",
-    "description": "Traditional Somali rice with meat",
-    "price": 12.0,
-    "image": "bariis&hilib.jpg",
-    "available": true
-  },
-  {
-    "id": "dish2",
-    "name": "Malawax Shakshuuko",
-    "category": "Breakfast",
-    "description": "Somali pancake with shakshuka sauce",
-    "price": 9.0,
-    "image": "malawax_shakshuuko.jpg",
-    "available": true
-  },
-  {
-    "id": "dish3",
-    "name": "Pasta & Hilib",
-    "category": "Mains",
-    "description": "Pasta served with Somali-style meat",
+    "description": "cambuulo macsaro",
     "price": 11.0,
-    "image": "pasta&hilib.jpg",
+    "image": "20260128042207_cabuulo_somali.jpg",
     "available": true
   },
   {
-    "id": "dish4",
-    "name": "Pizza Slice",
-    "category": "Fast Food",
-    "description": "Cheesy pizza with toppings",
+    "id": "20260128042717",
+    "name": "pizza kebab",
+    "category": "mains ",
+    "description": "kebab pizza",
     "price": 10.0,
-    "image": "pizza_pic.jpg",
+    "image": "20260128042717_pizza_pic.jpg",
     "available": true
   },
   {
-    "id": "dish5",
-    "name": "Saambuus",
-    "category": "Snacks",
-    "description": "Crispy Somali samosa filled with meat",
-    "price": 5.0,
-    "image": "saambuus.jpg",
+    "id": "20260128042945",
+    "name": "Malawax shakshuuko",
+    "category": "starts",
+    "description": "Qurac fudud",
+    "price": 7.0,
+    "image": "20260128042945_malawax_shakshuuko.jpg",
     "available": true
   },
   {
-    "id": "dish6",
-    "name": "Shaah & Cadays",
-    "category": "Drinks",
-    "description": "Somali tea served with snacks",
-    "price": 4.0,
-    "image": "shaah_cadays.jpg",
+    "id": "20260128043045",
+    "name": "Shani",
+    "category": "drinks",
+    "description": "Cabitan Qabaw",
+    "price": 2.5,
+    "image": "20260128043045_shani_cabitan.jpg",
     "available": true
   },
   {
-    "id": "dish7",
-    "name": "Shani Cabitan",
-    "category": "Drinks",
-    "description": "Refreshing Somali soft drink",
-    "price": 3.5,
-    "image": "shani_cabitan.jpg",
+    "id": "20260128043351",
+    "name": "pasta_hilib",
+    "category": "Mains",
+    "description": "Qado fresh ah",
+    "price": 11.0,
+    "image": "20260128043351_pastahilib.jpg",
+    "available": true
+  },
+  {
+    "id": "20260128043453",
+    "name": "Baris_hilib",
+    "category": "mains ",
+    "description": "Qado fresh ah",
+    "price": 12.0,
+    "image": "20260128043453_bariishilib.jpg",
+    "available": true
+  },
+  {
+    "id": "20260128043547",
+    "name": "Shah_cadays",
+    "category": "drinks",
+    "description": "shah cano leh",
+    "price": 3.0,
+    "image": "20260128043547_shaah_cadays.jpg",
+    "available": true
+  },
+  {
+    "id": "20260128043646",
+    "name": "Sambuse",
+    "category": "starts",
+    "description": "Sambus hilib ama Malay",
+    "price": 2.0,
+    "image": "20260128043646_saambuus.jpg",
     "available": true
   }
-]
 ]

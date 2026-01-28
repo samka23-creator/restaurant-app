@@ -7,5 +7,70 @@
     "price": 11.0,
     "image": "20260115162436_special-injera.jpg",
     "available": true
+  },
+  [
+  {
+    "id": "dish1",
+    "name": "Bariis & Hilib",
+    "category": "Mains",
+    "description": "Traditional Somali rice with meat",
+    "price": 12.0,
+    "image": "bariis&hilib.jpg",
+    "available": true
+  },
+  {
+    "id": "dish2",
+    "name": "Malawax Shakshuuko",
+    "category": "Breakfast",
+    "description": "Somali pancake with shakshuka sauce",
+    "price": 9.0,
+    "image": "malawax_shakshuuko.jpg",
+    "available": true
+  },
+  {
+    "id": "dish3",
+    "name": "Pasta & Hilib",
+    "category": "Mains",
+    "description": "Pasta served with Somali-style meat",
+    "price": 11.0,
+    "image": "pasta&hilib.jpg",
+    "available": true
+  },
+  {
+    "id": "dish4",
+    "name": "Pizza Slice",
+    "category": "Fast Food",
+    "description": "Cheesy pizza with toppings",
+    "price": 10.0,
+    "image": "pizza_pic.jpg",
+    "available": true
+  },
+  {
+    "id": "dish5",
+    "name": "Saambuus",
+    "category": "Snacks",
+    "description": "Crispy Somali samosa filled with meat",
+    "price": 5.0,
+    "image": "saambuus.jpg",
+    "available": true
+  },
+  {
+    "id": "dish6",
+    "name": "Shaah & Cadays",
+    "category": "Drinks",
+    "description": "Somali tea served with snacks",
+    "price": 4.0,
+    "image": "shaah_cadays.jpg",
+    "available": true
+  },
+  {
+    "id": "dish7",
+    "name": "Shani Cabitan",
+    "category": "Drinks",
+    "description": "Refreshing Somali soft drink",
+    "price": 3.5,
+    "image": "shani_cabitan.jpg",
+    "available": true
   }
+]
 ]
